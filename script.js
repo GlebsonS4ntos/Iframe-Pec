@@ -68,7 +68,7 @@
 
     document.getElementById("downlaoad-icon").addEventListener("click", (e) => {
       container.classList.toggle("downlaoad-icon");
-      const url = window.location.href;
+      const url = window.location.pathname;
       const partes = url.split("/");
       const index = partes.indexOf("folha-rosto");
       const code = partes[index - 1];
@@ -81,7 +81,7 @@
           headers.append("citizenCode", code);
         }
 
-        fetch("https://localhost:8080/citizen", {
+        fetch("/citizen", { //Utilizar o caminho utilizado no nginx pra fazer o proxy reverso
           headers: headers,
           method: "GET",
         }).then((response) => {
